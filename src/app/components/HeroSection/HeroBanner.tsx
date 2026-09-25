@@ -11,7 +11,7 @@ function HeroBanner() {
                 <p className="text-primaryText text-[16px] pe-20">FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
                     into today's plan, and watch the week's work add up.</p>
                 <div>
-                    <Button style="text-[12px] font-bold rounded-[5px] inline">BROWSE WORKOUTS</Button>
+                    <Button style="text-[12px] font-bold rounded-[5px] inline bg-foreground">BROWSE WORKOUTS</Button>
                 </div>
             </div>
             <div className="image col-span-3">
