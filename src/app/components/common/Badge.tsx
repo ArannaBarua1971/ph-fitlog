@@ -5,7 +5,7 @@ interface BadgeProps{
 }
 function Badge({children,style}:BadgeProps) {
   return (
-    <div className={`bg-foreground px-2.5 py-0.5 rounded-full font-bold text-[11px]  ${style}`}>{children}</div>
+    <div className={`bg-foreground text-black px-2.5 py-0.5 rounded-full font-bold text-[11px]  ${style}`}>{children}</div>
   )
 }
 
