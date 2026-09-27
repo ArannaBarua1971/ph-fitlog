@@ -62,8 +62,8 @@ async function WorkDetails({ params }: { params: Promise<{ id: string }> }) {
                     </div>
 
                     <div className="flex gap-3 mt-6">
-                        <AddTodayBtn/>
-                        <SavedBtn/>
+                        <AddTodayBtn data={data}/>
+                        <SavedBtn data={data}/>
                     </div>
                 </div>
             </div>
