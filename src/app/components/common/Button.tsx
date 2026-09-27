@@ -7,7 +7,7 @@ interface ButtonProps{
 }
 function Button({children,style,onClick}:ButtonProps) {
   return (
-    <button onClick={onClick} className={` bg-foreground border-none  px-6 py-3 text-[12px] font-bold rounded-[15px] inline  ${style} cursor-pointer`}>{children}</button>
+    <button onClick={onClick} className={` bg-foreground text-black border-none  px-6 py-3 text-[12px] font-bold rounded-[15px] inline  ${style} cursor-pointer`}>{children}</button>
   )
 }
 

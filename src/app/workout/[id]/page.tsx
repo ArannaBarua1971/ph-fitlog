@@ -3,10 +3,15 @@ import Badge from "@/app/components/common/Badge";
 import Image from "next/image";
 import SavedBtn from "@/app/components/WorkoutSection/SavedBtn";
 import AddTodayBtn from "@/app/components/WorkoutSection/AddTodayBtn";
+import { notFound } from "next/navigation";
 async function WorkDetails({ params }: { params: Promise<{ id: string }> }) {
 
     const { id } = await params;
+
     const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
+    if (!res.ok) {
+        notFound()
+    }
     const data = await res.json() as WorkoutTypes;
     const stats = Object.entries(data).slice(4, 11);
 
