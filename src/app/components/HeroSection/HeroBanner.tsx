@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Button from "../common/Button"
-
+import Link from "next/link"
 function HeroBanner() {
     return (
         <div className="flex justify-between p-14 bg-[#15171D]">
@@ -11,7 +11,9 @@ function HeroBanner() {
                 <p className="text-primaryText text-[16px] pe-20">FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
                     into today's plan, and watch the week's work add up.</p>
                 <div>
+                    <Link href="#library">
                     <Button >BROWSE WORKOUTS</Button>
+                    </Link>
                 </div>
             </div>
             <div className="image col-span-3">

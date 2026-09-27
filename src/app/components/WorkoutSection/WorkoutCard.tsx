@@ -40,7 +40,7 @@ function WorkoutCard({ data }: WorkoutProps) {
                             <span>{data.duration}min</span>
                         </div>
                         <div className='flex gap-2 justify-center items-center'>
-                            <i className="fa-solid fa-fire"></i>
+                            <i className="fa-solid fa-fire "></i>
                             <span>{data.caloriesBurned} kcal</span>
                         </div>
                         <div className='flex gap-1 justify-center items-center'>

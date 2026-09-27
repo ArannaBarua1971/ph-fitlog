@@ -1,11 +1,13 @@
 
 import { WorkoutTypes } from '@/app/types'
 import Image from 'next/image'
+import Link from 'next/link'
+import Button from '../common/Button'
 
 function SavedCard({ data ,submit}: { data: WorkoutTypes,submit:(id:number)=>void }) {
 
     return (
-        <div className="flex items-center gap-4 rounded-xl border border-gray-700 bg-[#15161d] p-3 text-white">
+        <div className="flex items-center gap-4 rounded-xl border border-gray-700 bg-[#15161d] p-3 text-white sb-3 mb-3">
             <Image
                 src={data.image}
                 alt={data.name}
@@ -23,31 +25,28 @@ function SavedCard({ data ,submit}: { data: WorkoutTypes,submit:(id:number)=>voi
 
                 <div className="mt-1.5 flex items-center gap-3 text-xs text-gray-300">
                     <span className="flex items-center gap-1">
-                        <i className="fa-regular fa-clock text-lime-400"></i>
+                        <i className="fa-regular fa-clock text-foreground"></i>
                         {data.duration} min
                     </span>
 
                     <span className="flex items-center gap-1">
-                        <i className="fa-solid fa-fire text-lime-400"></i>
+                        <i className="fa-solid fa-fire text-foreground"></i>
                         {data.caloriesBurned} kcal
                     </span>
 
                     <span className="flex items-center gap-1">
-                        <i className="fa-regular fa-star text-lime-400"></i>
+                        <i className="fa-regular fa-star text-foreground"></i>
                         {data.rating}
                     </span>
                 </div>
             </div>
 
             <div className="flex shrink-0 items-center gap-3">
-                <button className="rounded-full border border-gray-700 px-4 py-2 text-xs transition hover:bg-gray-800">
-                    View Details
-                </button>
-
-                <button className="flex items-center gap-1.5 rounded-full bg-lime-400 px-4 py-2 text-xs font-medium text-black transition hover:bg-lime-300">
-                    <i className="fa-solid fa-check"></i>
-                    Mark as Done
-                </button>
+                <Link href={`/workout/${data.id}`}>
+                    <Button style="bg-transparent text-white border border-primaryText font-normal py-2">
+                        View Details
+                    </Button>
+                </Link>
 
                 <button onClick={()=> submit(data.id)}  className="ml-1 text-gray-500 transition hover:text-white">
                     <i className="fa-solid fa-xmark"></i>

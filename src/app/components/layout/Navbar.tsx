@@ -1,9 +1,20 @@
 "use client"
+import { WorkoutContext } from "@/app/context/WorkoutProvider";
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useContext, useEffect, useState } from "react";
 
 function Navbar() {
     const pathname = usePathname();
+    const { todayWorkouts, savedWorkouts } = useContext(WorkoutContext);
+    const [plan, setPlan] = useState(0);
+    const [save, setSave] = useState(0);
+
+    useEffect(() => {
+        setPlan(todayWorkouts.length);
+        setSave(savedWorkouts.length)
+    }, [todayWorkouts, savedWorkouts])
+
     const links: { href: string, content: string }[] = [
         { href: "/", content: "Workouts" },
         { href: "/my-plan", content: "My Plan" }
@@ -27,19 +38,23 @@ function Navbar() {
             </div>
 
             <div className="flex items-center gap-5 text-xs text-zinc-400 font-medium">
-                <div className="flex items-center gap-2">
-                    <span className="text-3 text-white">Plan</span>
-                    <span className="bg-foreground  w-4 h-4 flex items-center justify-center rounded-full text-[9px]">
-                        0
-                    </span>
-                </div>
+                <Link href="/my-plan">
+                    <div className="flex items-center gap-2">
+                        <span className="text-3 text-white">Plan</span>
+                        <span className="bg-foreground  w-4 h-4 flex items-center justify-center rounded-full text-[9px]">
+                            {plan}
+                        </span>
+                    </div>
+                </Link>
+                <Link href="/my-plan">
 
-                <div className="flex items-center gap-2 text-primaryText">
-                    <span>Saved</span>
-                    <span className="w-4 h-4 flex items-center justify-center rounded-full text-[9px]">
-                        0
-                    </span>
-                </div>
+                    <div className="flex items-center gap-2 text-primaryText">
+                        <span>Saved</span>
+                        <span className="w-4 h-4 flex items-center justify-center rounded-full text-[9px]">
+                            {save}
+                        </span>
+                    </div>
+                </Link>
             </div>
         </nav>
     )

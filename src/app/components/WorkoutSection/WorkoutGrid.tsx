@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import WorkoutCard from './WorkoutCard';
 import { WorkoutTypes } from '@/app/types';
 
@@ -11,11 +11,13 @@ async function WorkoutGrid() {
     const workouts = await getWorkouts();
     return (
         <div className='grid grid-cols-3 py-8 gap-10'>
-            {
-                workouts.map((workout:WorkoutTypes)=>(
-                    <WorkoutCard key={workout.id} data={workout}></WorkoutCard>
-                ))
-            }
+            <Suspense fallback={<p>loading..</p>}>
+                {
+                    workouts.map((workout: WorkoutTypes) => (
+                        <WorkoutCard key={workout.id} data={workout}></WorkoutCard>
+                    ))
+                }
+            </Suspense>
         </div>
     )
 }

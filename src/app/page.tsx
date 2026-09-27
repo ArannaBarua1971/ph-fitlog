@@ -1,4 +1,3 @@
-import Image from "next/image";
 import HeroBanner from "./components/HeroSection/HeroBanner";
 import Workout from "./components/WorkoutSection/Workout";
 
