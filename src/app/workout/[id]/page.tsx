@@ -11,12 +11,12 @@ async function WorkDetails({ params }: { params: Promise<{ id: string }> }) {
     const stats = Object.entries(data).slice(4, 11);
 
     return (
-        <div className=" bg-black text-white flex items-center justify-center p-6">
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="rounded-2xl overflow-hidden ">
+        <div className="bg-black text-white flex items-center justify-center p-4 sm:p-6">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+                <div className="rounded-2xl overflow-hidden h-64 sm:h-80 md:h-96 lg:h-full max-h-170">
                     <Image
                         src={data.image}
-                        alt="Barbell bench press"
+                        alt={data.name}
                         className="w-full h-full object-cover"
                         width={400}
                         height={400}
@@ -24,12 +24,12 @@ async function WorkDetails({ params }: { params: Promise<{ id: string }> }) {
                 </div>
 
                 <div className="flex flex-col">
-                    <h1 className="text-3xl font-bold tracking-tight">{data.name}</h1>
-                    <p className="text-primaryText mt-2 text-sm leading-relaxed">
+                    <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{data.name}</h1>
+                    <p className="text-primaryText mt-2 text-xs sm:text-sm leading-relaxed">
                         {data.description}
                     </p>
 
-                    <div className="flex gap-2 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4">
                         {data.muscleGroups.map((tag) => (
                             <Badge
                                 key={tag}
@@ -42,9 +42,9 @@ async function WorkDetails({ params }: { params: Promise<{ id: string }> }) {
 
                     <div className="mt-6 bg-neutral-900 rounded-xl divide-y divide-neutral-800">
                         {stats.map((stat) => (
-                            <div key={stat[0]} className="flex justify-between px-4 py-3">
+                            <div key={stat[0]} className="flex justify-between px-3 sm:px-4 py-2.5 sm:py-3">
                                 <span className="text-primaryText text-xs font-bold">{stat[0].toUpperCase()}</span>
-                                <span className="text-sm font-medium text-[#E5E7EB]">{stat[1]}</span>
+                                <span className="text-xs sm:text-sm font-medium text-[#E5E7EB]">{stat[1]}</span>
                             </div>
                         ))}
                     </div>
@@ -53,17 +53,17 @@ async function WorkDetails({ params }: { params: Promise<{ id: string }> }) {
                         <h2 className="text-base font-semibold mb-3">Instructions</h2>
                         <ol className="space-y-3">
                             {data.instructions.map((step, i) => (
-                                <li key={i} className="text-sm text-gray-300 flex gap-2">
-                                    <span className="text-gray-500">{i + 1}.</span>
+                                <li key={i} className="text-xs sm:text-sm text-gray-300 flex gap-2">
+                                    <span className="text-gray-500 shrink-0">{i + 1}.</span>
                                     <span>{step}</span>
                                 </li>
                             ))}
                         </ol>
                     </div>
 
-                    <div className="flex gap-3 mt-6">
-                        <AddTodayBtn data={data}/>
-                        <SavedBtn data={data}/>
+                    <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                        <AddTodayBtn data={data} />
+                        <SavedBtn data={data} />
                     </div>
                 </div>
             </div>

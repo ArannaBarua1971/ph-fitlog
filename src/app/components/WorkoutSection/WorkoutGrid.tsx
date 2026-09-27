@@ -10,7 +10,7 @@ const getWorkouts = async () => {
 async function WorkoutGrid() {
     const workouts = await getWorkouts();
     return (
-        <div className='grid grid-cols-3 py-8 gap-10'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 py-8 gap-10'>
             <Suspense fallback={<p>loading..</p>}>
                 {
                     workouts.map((workout: WorkoutTypes) => (

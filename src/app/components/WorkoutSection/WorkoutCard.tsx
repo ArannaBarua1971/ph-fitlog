@@ -9,17 +9,17 @@ interface WorkoutProps {
 function WorkoutCard({ data }: WorkoutProps) {
     return (
         <Link href={`/workout/${data.id}`}>
-            <div className=" rounded-2xl overflow-hidden bg-[#15171c]">
-                <div className=" h-56 w-full">
+            <div className="rounded-2xl overflow-hidden bg-[#15171c] hover:scale-[1.02] transition-transform duration-200">
+                <div className="h-48 sm:h-52 md:h-56 w-full">
                     <img
-                        className='w-full h-full object-cover'
+                        className="w-full h-full object-cover"
                         src={data.image}
-                        alt="Barbell Bench Press"
+                        alt={data.name || "Workout image"}
                     />
                 </div>
 
-                <div className="px-4 pt-4 pb-5">
-                    <div className="flex gap-2 mb-3">
+                <div className="p-4 sm:p-5">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
                         {
                             data.muscleGroups.map(item => (
                                 <Badge key={item}>{item}</Badge>
@@ -27,23 +27,23 @@ function WorkoutCard({ data }: WorkoutProps) {
                         }
                     </div>
 
-                    <h2 className="text-xl font-extrabold tracking-tight text-white">
+                    <h2 className="text-lg sm:text-xl font-extrabold tracking-tight text-white line-clamp-1">
                         {data.name}
                     </h2>
-                    <p className="text-gray-400 text-sm mt-1">{data.equipment}</p>
+                    <p className="text-gray-400 text-xs sm:text-sm mt-1 line-clamp-1">{data.equipment}</p>
 
                     <div className="h-px bg-gray-700 my-3" />
 
-                    <div className="flex text-primaryText gap-4">
-                        <div className='flex gap-1 justify-center items-center' >
+                    <div className="flex flex-wrap items-center justify-between sm:justify-start text-primaryText text-xs sm:text-sm gap-2 sm:gap-4">
+                        <div className="flex gap-1 justify-center items-center">
                             <i className="fa-regular fa-clock"></i>
                             <span>{data.duration}min</span>
                         </div>
-                        <div className='flex gap-2 justify-center items-center'>
-                            <i className="fa-solid fa-fire "></i>
+                        <div className="flex gap-1.5 sm:gap-2 justify-center items-center">
+                            <i className="fa-solid fa-fire"></i>
                             <span>{data.caloriesBurned} kcal</span>
                         </div>
-                        <div className='flex gap-1 justify-center items-center'>
+                        <div className="flex gap-1 justify-center items-center">
                             <i className="fa-regular fa-star"></i>
                             <span>{data.rating}</span>
                         </div>
